@@ -1,4 +1,9 @@
 from fastapi import FastAPI
+from .database import engine, Base
+from . import models
+
+# Crear tablas automáticamente si no existen
+Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
     title="LUZÍA API",
